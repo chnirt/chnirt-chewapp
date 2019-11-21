@@ -1,8 +1,12 @@
+const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const dotenv = require("dotenv").config({ path: __dirname + "/.env" });
+
+const { env } = process;
 
 module.exports = {
+  mode: env.NODE_ENV,
   // webpack will take the files from ./src/index
   entry: "./src/index",
 
@@ -11,7 +15,7 @@ module.exports = {
     path: path.join(__dirname, "/dist"),
     filename: "bundle.js"
   },
-
+  watch: env.NODE_ENV !== "production" && true,
   // adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
   resolve: {
     extensions: [".js", "jsx"]
@@ -53,25 +57,79 @@ module.exports = {
           }
         ]
       }
-
-      // {
-      //   test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-      //   loader: "file-loader?name=[name].[ext]" // <-- retain original file name
-      // }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       favicon: "./public/favicon.ico"
+    }),
+    new webpack.DefinePlugin({
+      "process.env": dotenv.parsed
     })
   ],
-
+  devtool: "cheap-module-eval-source-map", // this helps to browser to point to the exact file in the console, helps in debug
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
     compress: true,
+    contentBase: path.join(__dirname, "dist"),
+    disableHostCheck: true, // THIS IS NOT RECOMMENDED,
+    // lazy: true,
+    // filename: "bundle.js",
+    headers: {
+      "X-Custom-Foo": "bar"
+    },
+    // historyApiFallback: {
+    //   rewrites: [
+    //     { from: /^\/$/, to: "/views/landing.html" },
+    //     { from: /^\/subpage/, to: "/views/subpage.html" },
+    //     { from: /./, to: "/views/404.html" }
+    //   ]
+    // },
+    historyApiFallback: {
+      disableDotRule: true
+    },
     host: "0.0.0.0",
-    disableHostCheck: true,
-    port: 14042
+    hot: true,
+    // http2: true,
+    // https: {
+    //   key: fs.readFileSync("/ssl/server.key"),
+    //   cert: fs.readFileSync("/ssl/server.crt"),
+    //   ca: fs.readFileSync("/ssl/ca.pem")
+    // },
+    // index: "./public/index.html",
+    // injectClient: compilerConfig => compilerConfig.name === "only-include",
+    inline: true,
+    // lazy: true,
+    liveReload: false,
+    // mimeTypes: { "text/html": ["phtml"] },
+    noInfo: true,
+    onListening: function(server) {
+      const port = server.listeningApp.address().port;
+      console.log("🚀 Listening on port:", port);
+    },
+    open: true, // 'Google Chrome'
+    // openPage: ['/different/page1', '/different/page2'],
+    overlay: {
+      // warnings: true,
+      errors: true
+    },
+    // pfx: '/path/to/file.pfx',
+    // pfxPassphrase: 'passphrase',
+    port: env.PORT || 8080,
+    // proxy: {
+    //   "/api": "http://localhost:3000",
+    //   pathRewrite: { "^/api": "" }
+    // },
+    // public: "myapp.test:80",
+    // publicPath: "/src/assets/",
+    // quiet: true,
+    serveIndex: true,
+    // socket: "socket",
+    // sockHost: "myhost.test",
+    // sockPath: "/socket",
+    // sockPort: 8080,
+    staticOptions: {
+      redirect: false
+    }
   }
 };
