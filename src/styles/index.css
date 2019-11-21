@@ -1,4 +1,7 @@
+:root {
+  --main-h1-color: green;
+}
+
 h1 {
-  color: #292727;
-  text-align: center;
+  color: var(--main-h1-color);
 }
