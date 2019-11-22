@@ -1,17 +1,16 @@
 import React from "react";
 
-import "./styles/index.css";
-import "./styles/index.scss";
-import "./styles/index.less";
+import Context from "./tools/context";
 
-import Demo from "./components/Demo";
+import Root from "./pages";
 
 class App extends React.PureComponent {
   render() {
     return (
       <div>
-        Hella1234567
-        <Demo />
+        <Context>
+          <Root />
+        </Context>
       </div>
     );
   }
