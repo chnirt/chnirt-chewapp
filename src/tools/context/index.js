@@ -6,7 +6,7 @@ export { CTX };
 
 export default function Store(props) {
   const [isAuth, setIsAuth] = useState(
-    window.localStorage.getItem("access-token") || false
+    !!window.localStorage.getItem("access-token")
   );
 
   const authenticate = token => {

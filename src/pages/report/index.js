@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function index() {
-  return <div>Dashboard</div>;
+  return <div>Report</div>;
 }
 
 export default index;

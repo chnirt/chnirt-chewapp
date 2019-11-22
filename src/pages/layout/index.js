@@ -2,9 +2,15 @@ import React, { useContext } from "react";
 
 import { CTX } from "../../tools/context";
 
+import Sidebar from "./sidebar";
+
 function index(props) {
   const authContext = useContext(CTX);
   const { logout } = authContext;
+
+  const { children } = props;
+
+  const t = "helloT";
 
   function onLogout() {
     logout();
@@ -14,7 +20,8 @@ function index(props) {
     <div>
       Layout
       <button onClick={onLogout}>Logout</button>
-      {props.children}
+      <Sidebar />
+      {React.cloneElement(children, { t })}
     </div>
   );
 }

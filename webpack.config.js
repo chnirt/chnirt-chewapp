@@ -13,7 +13,8 @@ module.exports = {
   // and output it into /dist as bundle.js
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: "/"
   },
   watch: env.NODE_ENV !== "production" && true,
   // adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
@@ -129,7 +130,7 @@ module.exports = {
     // sockPath: "/socket",
     // sockPort: 8080,
     staticOptions: {
-      redirect: false
+      redirect: true
     },
     stats: "errors-only",
     // transportMode: {

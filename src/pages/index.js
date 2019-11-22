@@ -1,4 +1,4 @@
-import React, { Suspense, useContext } from "react";
+import React, { useContext, Suspense, lazy } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { CTX } from "../tools/context";
@@ -12,48 +12,50 @@ function index(props) {
   const { isAuth } = authContext;
 
   return (
-    <Suspense fallback={<Loading />}>
-      <BrowserRouter>
-        <Switch>
-          {routes &&
-            routes.map(item =>
-              item.private ? (
-                <Route
-                  key={item.label}
-                  {...item}
-                  component={props => {
-                    const LazyComponent = React.lazy(() =>
-                      import(`./${item.component}`)
-                    );
-                    return isAuth ? (
-                      <Layout>
+    <BrowserRouter>
+      <Switch>
+        {routes &&
+          routes.map(item =>
+            item.private ? (
+              <Route
+                key={item.label}
+                {...item}
+                component={() => {
+                  const LazyComponent = lazy(() =>
+                    import(`./${item.component}`)
+                  );
+                  return isAuth ? (
+                    <Layout>
+                      <Suspense fallback={<Loading />}>
                         <LazyComponent {...props} {...item} />
-                      </Layout>
-                    ) : (
-                      <Redirect to="/login" />
-                    );
-                  }}
-                />
-              ) : (
-                <Route
-                  key={item.label}
-                  {...item}
-                  component={props => {
-                    const LazyComponent = React.lazy(() =>
-                      import(`./${item.component}`)
-                    );
-                    return !isAuth ? (
+                      </Suspense>
+                    </Layout>
+                  ) : (
+                    <Redirect to="/login" />
+                  );
+                }}
+              />
+            ) : (
+              <Route
+                key={item.label}
+                {...item}
+                component={() => {
+                  const LazyComponent = lazy(() =>
+                    import(`./${item.component}`)
+                  );
+                  return !isAuth ? (
+                    <Suspense fallback={<Loading />}>
                       <LazyComponent {...props} {...item} />
-                    ) : (
-                      <Redirect to="/" />
-                    );
-                  }}
-                />
-              )
-            )}
-        </Switch>
-      </BrowserRouter>
-    </Suspense>
+                    </Suspense>
+                  ) : (
+                    <Redirect to="/" />
+                  );
+                }}
+              />
+            )
+          )}
+      </Switch>
+    </BrowserRouter>
   );
 }
 

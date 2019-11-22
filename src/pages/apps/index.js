@@ -2,8 +2,12 @@ import React, { Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Loading from "../../components/shared/loading";
 
+import User from "../user";
+
 export default function Root(props) {
   const { routes } = props;
+
+  console.log(props);
   return (
     <Suspense fallback={<Loading />}>
       <Switch>
@@ -12,22 +16,17 @@ export default function Root(props) {
             <Route
               key={route.label}
               {...route}
-              component={props1 => {
+              component={() => {
                 const LazyComponent = React.lazy(() =>
                   import(`../${route.component}`)
                 );
                 return (
-                  <LazyComponent
-                    {...props}
-                    {...props1}
-                    {...route}
-                    routes={route.routes}
-                  />
+                  <LazyComponent {...props} {...route} routes={route.routes} />
                 );
               }}
             />
           ))}
-        <Redirect to="/🥢" />
+        <Redirect to="/" />
       </Switch>
     </Suspense>
   );
