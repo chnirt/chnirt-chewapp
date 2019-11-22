@@ -9,7 +9,6 @@ function Demo() {
       <h2>Chnirt!</h2>
       <h3>Where r u?</h3>
       <img src={background} style={{ height: 300 }} />
-      zxc
     </div>
   );
 }

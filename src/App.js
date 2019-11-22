@@ -4,15 +4,14 @@ import "./styles/index.css";
 import "./styles/index.scss";
 import "./styles/index.less";
 
-import Root from "./pages";
-// import "helloworld";
+import Demo from "./components/Demo";
 
 class App extends React.PureComponent {
   render() {
     return (
       <div>
         Hella1234567
-        {/* <Root /> */}
+        <Demo />
       </div>
     );
   }

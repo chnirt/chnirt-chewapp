@@ -68,7 +68,7 @@ module.exports = {
       "process.env": dotenv.parsed
     })
   ],
-  devtool: "cheap-module-eval-source-map", // this helps to browser to point to the exact file in the console, helps in debug
+  devtool: env.NODE_ENV === "production" ? "source-maps" : "eval", // this helps to browser to point to the exact file in the console, helps in debug
   devServer: {
     compress: true,
     contentBase: path.join(__dirname, "dist"),
@@ -88,7 +88,7 @@ module.exports = {
     historyApiFallback: {
       disableDotRule: true
     },
-    host: "0.0.0.0",
+    host: "0.0.0.0", // 0.0.0.0
     hot: true,
     // http2: true,
     // https: {
@@ -102,7 +102,7 @@ module.exports = {
     // lazy: true,
     liveReload: false,
     // mimeTypes: { "text/html": ["phtml"] },
-    noInfo: true,
+    // noInfo: true,
     onListening: function(server) {
       const port = server.listeningApp.address().port;
       console.log("🚀 Listening on port:", port);
@@ -130,6 +130,18 @@ module.exports = {
     // sockPort: 8080,
     staticOptions: {
       redirect: false
-    }
+    },
+    stats: "errors-only",
+    // transportMode: {
+    //   client: require.resolve("./CustomClient"),
+    //   server: "ws"
+    // },
+    // useLocalIp: true,
+    watchContentBase: true,
+    watchOptions: {
+      ignored: /node_modules/,
+      poll: true
+    },
+    writeToDisk: true
   }
 };
