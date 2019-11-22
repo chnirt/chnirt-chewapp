@@ -8,6 +8,8 @@ class App extends React.PureComponent {
   render() {
     return (
       <div>
+        123
+        {/* asdasdassada */}
         <Context>
           <Root />
         </Context>

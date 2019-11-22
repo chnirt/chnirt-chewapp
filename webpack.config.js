@@ -2,13 +2,14 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const dotenv = require("dotenv").config({ path: __dirname + "/.env" });
+const TerserPlugin = require("terser-webpack-plugin");
 
 const { env } = process;
 
 module.exports = {
   mode: env.NODE_ENV,
   // webpack will take the files from ./src/index
-  entry: "./src/index",
+  entry: "./src/index.js",
 
   // and output it into /dist as bundle.js
   output: {
@@ -60,6 +61,21 @@ module.exports = {
       }
     ]
   },
+
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        },
+        extractComments: false
+      })
+    ]
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",

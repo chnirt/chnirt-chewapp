@@ -3,13 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "/chnirt",
   "scripts": {
-    "bundle": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV='development' webpack-dev-server --mode development",
-    "build": "NODE_ENV='production' webpack --mode production",
-    "check-types": "tsc"
+    "start": "node server.js",
+    "dev": "NODE_ENV='development' webpack-dev-server --mode development",
+    "heroku-postbuild": "webpack -p"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +27,7 @@
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
+    "terser-webpack-plugin": "^2.2.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
