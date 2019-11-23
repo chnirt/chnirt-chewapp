@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,13 +13,15 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { CTX } from "../../tools/context";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      {/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{" "}
+      </Link>{" "} */}
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -56,8 +58,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignInSide() {
+function index(props) {
+  const authContext = useContext(CTX);
+  const { authenticate } = authContext;
+
   const classes = useStyles();
+
+  const email = useRef();
+  const password = useRef();
+
+  function onLogin(e) {
+    e.preventDefault();
+    const accessToken = email.current.value + password.current.value;
+    authenticate(accessToken);
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -82,6 +96,7 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              ref={email}
             />
             <TextField
               variant="outlined"
@@ -93,6 +108,7 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              ref={password}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -104,6 +120,7 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={onLogin}
             >
               Sign In
             </Button>
@@ -128,3 +145,5 @@ export default function SignInSide() {
     </Grid>
   );
 }
+
+export default index;

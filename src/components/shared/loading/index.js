@@ -1,7 +1,7 @@
 import React from "react";
-// import { Spin } from "antd";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-function loading() {
+function index() {
   return (
     <div
       style={{
@@ -12,10 +12,9 @@ function loading() {
         margin: "20px 0"
       }}
     >
-      {/* <Spin size="large" /> */}
-      Loading...
+      <CircularProgress disableShrink />
     </div>
   );
 }
 
-export default loading;
+export default index;

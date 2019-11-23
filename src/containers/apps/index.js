@@ -7,7 +7,6 @@ import User from "../user";
 export default function Root(props) {
   const { routes } = props;
 
-  console.log(props);
   return (
     <Suspense fallback={<Loading />}>
       <Switch>

@@ -18,6 +18,7 @@ export default function Store(props) {
     window.localStorage.clear();
     setIsAuth(false);
   };
+
   return (
     <CTX.Provider value={{ isAuth, authenticate, logout }}>
       {props.children}
