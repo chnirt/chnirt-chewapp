@@ -91,7 +91,8 @@ function index(props) {
 					<Formik
 						initialValues={{
 							email: '',
-							password: ''
+							password: '',
+							remember: !!window.localStorage.getItem('email') || ''
 						}}
 						validationSchema={Yup.object().shape({
 							email: Yup.string()
@@ -103,7 +104,7 @@ function index(props) {
 						})}
 						onSubmit={fields => {
 							const { email, password, remember } = fields
-							console.log(remember)
+							// console.log(fields)
 							if (remember === true) {
 								window.localStorage.setItem('email', email)
 							} else {
@@ -161,10 +162,7 @@ function index(props) {
 									)}
 								</Field>
 								<Field name='remember'>
-									{({
-										field = !!window.localStorage.getItem('email'),
-										form
-									}) => (
+									{({ field, form }) => (
 										<FormControlLabel
 											control={
 												<Checkbox
