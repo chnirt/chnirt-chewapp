@@ -50,8 +50,8 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex'
 	},
 	bigAvatar: {
-		width: 60,
-		height: 60
+		width: 50,
+		height: 50
 	},
 	toolbar: {
 		paddingRight: 24 // keep right padding when drawer closed
