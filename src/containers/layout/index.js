@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -17,6 +17,10 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import { mainListItems } from './listItems'
+import Button from '@material-ui/core/Button'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import Avatar from '@material-ui/core/Avatar'
 
 import Paper from '@material-ui/core/Paper'
 
@@ -28,7 +32,7 @@ import { CTX } from '../../tools/context'
 
 function Copyright() {
 	return (
-		<Typography variant="body2" color="textSecondary" align="center">
+		<Typography variant='body2' color='textSecondary' align='center'>
 			{'Copyright © '}
 			{/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
@@ -44,6 +48,10 @@ const drawerWidth = 240
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex'
+	},
+	bigAvatar: {
+		width: 60,
+		height: 60
 	},
 	toolbar: {
 		paddingRight: 24 // keep right padding when drawer closed
@@ -129,17 +137,30 @@ function index(props) {
 	const t = 'helloT'
 
 	const classes = useStyles()
-	const [open, setOpen] = React.useState(true)
+	const [open, setOpen] = useState(true)
+
 	const handleDrawerOpen = () => {
 		setOpen(true)
 	}
+
 	const handleDrawerClose = () => {
 		setOpen(false)
 	}
+
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
 	function onLogout() {
 		logout()
+	}
+
+	const [anchorEl, setAnchorEl] = useState(null)
+
+	const handleClick = event => {
+		setAnchorEl(event.currentTarget)
+	}
+
+	const handleClose = () => {
+		setAnchorEl(null)
 	}
 
 	return (
@@ -147,14 +168,14 @@ function index(props) {
 			<div className={classes.root}>
 				<CssBaseline />
 				<AppBar
-					position="absolute"
+					position='absolute'
 					className={clsx(classes.appBar, open && classes.appBarShift)}
 				>
 					<Toolbar className={classes.toolbar}>
 						<IconButton
-							edge="start"
-							color="inherit"
-							aria-label="open drawer"
+							edge='start'
+							color='inherit'
+							aria-label='open drawer'
 							onClick={handleDrawerOpen}
 							className={clsx(
 								classes.menuButton,
@@ -164,24 +185,41 @@ function index(props) {
 							<MenuIcon />
 						</IconButton>
 						<Typography
-							component="h1"
-							variant="h6"
-							color="inherit"
+							component='h1'
+							variant='h6'
+							color='inherit'
 							noWrap
 							className={classes.title}
 						>
 							Dashboard
 						</Typography>
-						<IconButton color="inherit">
-							<Badge badgeContent={4} color="secondary">
-								<NotificationsIcon />
-							</Badge>
-							<button onClick={onLogout}>Logout</button>
+
+						<IconButton
+							aria-label='more'
+							aria-controls='long-menu'
+							aria-haspopup='true'
+							onClick={handleClick}
+						>
+							<Avatar
+								className={classes.purple}
+								src='https://res.cloudinary.com/chnirt/image/upload/v1573662028/rest/2019-11-13T16:20:22.699Z.png'
+							/>
 						</IconButton>
+						<Menu
+							id='simple-menu'
+							anchorEl={anchorEl}
+							keepMounted
+							open={Boolean(anchorEl)}
+							onClose={handleClose}
+						>
+							<MenuItem onClick={handleClose}>Profile</MenuItem>
+							<MenuItem onClick={handleClose}>My account</MenuItem>
+							<MenuItem onClick={onLogout}>Logout</MenuItem>
+						</Menu>
 					</Toolbar>
 				</AppBar>
 				<Drawer
-					variant="permanent"
+					variant='permanent'
 					classes={{
 						paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
 					}}
@@ -198,7 +236,7 @@ function index(props) {
 				<main className={classes.content}>
 					<div className={classes.appBarSpacer} />
 
-					<Container maxWidth="lg" className={classes.container}>
+					<Container maxWidth='lg' className={classes.container}>
 						{React.cloneElement(children, {
 							t,
 							fixedHeightPaper,
