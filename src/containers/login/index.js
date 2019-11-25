@@ -90,7 +90,7 @@ function index(props) {
 
 					<Formik
 						initialValues={{
-							email: '',
+							email: window.localStorage.getItem('email') || '',
 							password: '',
 							remember: !!window.localStorage.getItem('email') || ''
 						}}
