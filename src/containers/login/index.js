@@ -19,7 +19,7 @@ import { CTX } from '../../tools/context'
 
 function Copyright() {
 	return (
-		<Typography variant='body2' color='textSecondary' align='center'>
+		<Typography variant="body2" color="textSecondary" align="center">
 			{'Copyright © '}
 			{/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
@@ -76,16 +76,16 @@ function index(props) {
 	}
 
 	return (
-		<Grid container component='main' className={classes.root}>
+		<Grid container component="main" className={classes.root}>
 			<CssBaseline />
 			<Grid item xs={false} sm={4} md={7} className={classes.image} />
 			<Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
 				<div className={classes.paper}>
 					<Avatar
 						className={classes.avatar}
-						src='https://res.cloudinary.com/chnirt/image/upload/v1573662028/rest/2019-11-13T16:20:22.699Z.png'
+						src="https://res.cloudinary.com/chnirt/image/upload/v1573662028/rest/2019-11-13T16:20:22.699Z.png"
 					/>
-					<Typography component='h1' variant='h5'>
+					<Typography component="h1" variant="h5">
 						Sign in
 					</Typography>
 
@@ -93,7 +93,7 @@ function index(props) {
 						initialValues={{
 							email: window.localStorage.getItem('email') || '',
 							password: '',
-							remember: !!window.localStorage.getItem('email') || ''
+							remember: !!window.localStorage.getItem('email') || false
 						}}
 						validationSchema={Yup.object().shape({
 							email: Yup.string()
@@ -116,20 +116,20 @@ function index(props) {
 						}}
 						render={({ errors, status, touched }) => (
 							<Form className={classes.form} noValidate>
-								<Field name='email' type='text'>
+								<Field name="email" type="text">
 									{({ field, form, meta }) => (
 										<TextField
-											variant='outlined'
-											margin='normal'
+											variant="outlined"
+											margin="normal"
 											required
 											fullWidth
-											name='email'
-											autoComplete='email'
+											name="email"
+											autoComplete="email"
 											autoFocus
 											ref={email}
 											{...field}
 											error={meta.touched && meta.error ? true : false}
-											label='Email Address'
+											label="Email Address"
 											id={
 												meta.touched && meta.error
 													? 'standard-error-helper-text'
@@ -139,20 +139,20 @@ function index(props) {
 										/>
 									)}
 								</Field>
-								<Field name='password' type='password'>
+								<Field name="password" type="password">
 									{({ field, form, meta }) => (
 										<TextField
-											variant='outlined'
-											margin='normal'
+											variant="outlined"
+											margin="normal"
 											required
 											fullWidth
-											name='password'
-											type='password'
-											autoComplete='current-password'
+											name="password"
+											type="password"
+											autoComplete="current-password"
 											ref={password}
 											{...field}
 											error={meta.touched && meta.error ? true : false}
-											label='Password'
+											label="Password"
 											id={
 												meta.touched && meta.error
 													? 'standard-error-helper-text'
@@ -162,39 +162,39 @@ function index(props) {
 										/>
 									)}
 								</Field>
-								<Field name='remember'>
+								<Field name="remember">
 									{({ field, form }) => (
 										<FormControlLabel
 											control={
 												<Checkbox
-													value='remember'
-													color='primary'
-													id='remember'
+													value="remember"
+													color="primary"
+													id="remember"
 													checked={field.value}
 													{...field}
 												/>
 											}
-											label='Remember me'
+											label="Remember me"
 										/>
 									)}
 								</Field>
 								<Button
-									type='submit'
+									type="submit"
 									fullWidth
-									variant='contained'
-									color='primary'
+									variant="contained"
+									color="primary"
 									className={classes.submit}
 								>
 									Sign In
 								</Button>
 								<Grid container>
 									<Grid item xs>
-										<Link href='#' variant='body2'>
+										<Link href="#" variant="body2">
 											Forgot password?
 										</Link>
 									</Grid>
 									<Grid item>
-										<Link href='#' variant='body2'>
+										<Link href="#" variant="body2">
 											{"Don't have an account? Sign Up"}
 										</Link>
 									</Grid>

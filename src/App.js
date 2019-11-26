@@ -1,19 +1,18 @@
-import React from "react";
+import React from 'react'
 
-import Context from "./tools/context";
-
-import Root from "./containers";
+import Context from './tools/context'
+import Root from './containers'
 
 class App extends React.PureComponent {
-  render() {
-    return (
-      <div>
-        <Context>
-          <Root />
-        </Context>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+				<Context>
+					<Root />
+				</Context>
+			</div>
+		)
+	}
 }
 
-export default App;
+export default App

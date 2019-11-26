@@ -89,8 +89,9 @@ function index() {
 
 	return (
 		<Paper className={classes.root}>
+			<h2>Hello world</h2>
 			<div className={classes.tableWrapper}>
-				<Table stickyHeader aria-label='sticky table'>
+				<Table stickyHeader aria-label="sticky table">
 					<TableHead>
 						<TableRow>
 							{columns.map((column, i) => (
@@ -109,7 +110,7 @@ function index() {
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 							.map((row, i) => {
 								return (
-									<TableRow hover role='checkbox' tabIndex={-1} key={i}>
+									<TableRow hover role="checkbox" tabIndex={-1} key={i}>
 										{columns.map((column, i) => {
 											const value = row[column.id]
 											return (
@@ -128,7 +129,7 @@ function index() {
 			</div>
 			<TablePagination
 				rowsPerPageOptions={[10, 25, 100]}
-				component='div'
+				component="div"
 				count={rows.length}
 				rowsPerPage={rowsPerPage}
 				page={page}
