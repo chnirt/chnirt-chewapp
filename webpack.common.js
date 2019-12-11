@@ -7,7 +7,8 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			title: 'Caching'
+			title: 'Hello Webpack bundled JavaScript Project',
+			template: './public/index.html'
 		})
 	],
 	watch: process.env.NODE_ENV !== 'production' && true,
@@ -17,7 +18,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(ts|js)x?$/,
+				test: /\.(js)x?$/,
 				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader'
@@ -58,6 +59,11 @@ module.exports = {
 			}
 		]
 	},
+	output: {
+		path: path.resolve(__dirname, '../', 'dist'),
+		publicPath: '/',
+		filename: 'bundle.js'
+	},
 	devServer: {
 		compress: true,
 		contentBase: path.join(__dirname, 'dist'),
@@ -79,7 +85,7 @@ module.exports = {
 			console.log('🚀 Listening on port:', port)
 		},
 		open: true, // 'Google Chrome'
-		port: process.env.PORT || 8080,
+		port: process.env.PORT || 14040,
 		stats: {
 			colors: true,
 			hash: true,
