@@ -32,7 +32,7 @@ import { CTX } from '../../tools/context'
 
 function Copyright() {
 	return (
-		<Typography variant='body2' color='textSecondary' align='center'>
+		<Typography variant="body2" color="textSecondary" align="center">
 			{'Copyright © '}
 			{/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
@@ -49,9 +49,9 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex'
 	},
-	bigAvatar: {
-		width: 50,
-		height: 50
+	defaultAvatar: {
+		width: 24,
+		height: 24
 	},
 	toolbar: {
 		paddingRight: 24 // keep right padding when drawer closed
@@ -168,14 +168,14 @@ function index(props) {
 			<div className={classes.root}>
 				<CssBaseline />
 				<AppBar
-					position='absolute'
+					position="absolute"
 					className={clsx(classes.appBar, open && classes.appBarShift)}
 				>
 					<Toolbar className={classes.toolbar}>
 						<IconButton
-							edge='start'
-							color='inherit'
-							aria-label='open drawer'
+							edge="start"
+							color="inherit"
+							aria-label="open drawer"
 							onClick={handleDrawerOpen}
 							className={clsx(
 								classes.menuButton,
@@ -185,9 +185,9 @@ function index(props) {
 							<MenuIcon />
 						</IconButton>
 						<Typography
-							component='h1'
-							variant='h6'
-							color='inherit'
+							component="h1"
+							variant="h6"
+							color="inherit"
 							noWrap
 							className={classes.title}
 						>
@@ -195,18 +195,18 @@ function index(props) {
 						</Typography>
 
 						<IconButton
-							aria-label='more'
-							aria-controls='long-menu'
-							aria-haspopup='true'
+							aria-label="more"
+							aria-controls="long-menu"
+							aria-haspopup="true"
 							onClick={handleClick}
 						>
 							<Avatar
-								className={classes.purple}
-								src='https://res.cloudinary.com/chnirt/image/upload/v1573662028/rest/2019-11-13T16:20:22.699Z.png'
+								className={classes.defaultAvatar}
+								src="https://res.cloudinary.com/chnirt/image/upload/v1573662028/rest/2019-11-13T16:20:22.699Z.png"
 							/>
 						</IconButton>
 						<Menu
-							id='simple-menu'
+							id="simple-menu"
 							anchorEl={anchorEl}
 							keepMounted
 							open={Boolean(anchorEl)}
@@ -219,7 +219,7 @@ function index(props) {
 					</Toolbar>
 				</AppBar>
 				<Drawer
-					variant='permanent'
+					variant="permanent"
 					classes={{
 						paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
 					}}
@@ -236,7 +236,7 @@ function index(props) {
 				<main className={classes.content}>
 					<div className={classes.appBarSpacer} />
 
-					<Container maxWidth='lg' className={classes.container}>
+					<Container maxWidth="lg" className={classes.container}>
 						{React.cloneElement(children, {
 							t,
 							fixedHeightPaper,
