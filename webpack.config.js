@@ -86,11 +86,16 @@ module.exports = {
 		]
 	},
 	optimization: {
+		minimize: true,
 		namedModules: true,
 		namedChunks: true,
-		concatenateModules: false,
+		removeAvailableModules: true,
+		flagIncludedChunks: true,
+		occurrenceOrder: false,
+		usedExports: true,
+		concatenateModules: true,
+		sideEffects: false,
 		usedExports: process.env.NODE_ENV !== 'production',
-		minimize: true,
 		minimizer: [
 			// new ClosurePlugin(
 			//   { mode: "STANDARD" },
