@@ -177,7 +177,7 @@ module.exports = {
 		process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map', // this helps to browser to point to the exact file in the console, helps in debug
 	devServer: {
 		compress: true,
-		contentBase: path.join(__dirname, 'src'),
+		contentBase: path.join(__dirname, 'dist'),
 		disableHostCheck: true, // THIS IS NOT RECOMMENDED,
 		// lazy: true,
 		filename: 'bundle.js',
