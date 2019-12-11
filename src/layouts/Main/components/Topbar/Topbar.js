@@ -40,33 +40,33 @@ const Topbar = props => {
 	return (
 		<AppBar {...rest} className={clsx(classes.root, className)}>
 			<Toolbar>
-				<RouterLink to="/">
-					<img alt="Logo" src="/src/assets/images/project-logo.png" />
-				</RouterLink>
-				<div className={classes.flexGrow} />
 				<Hidden mdDown>
-					<IconButton color="inherit">
-						<Badge
-							badgeContent={notifications.length}
-							color="primary"
-							variant="dot"
-						>
-							<NotificationsIcon />
-						</Badge>
-					</IconButton>
-					<IconButton
-						className={classes.signOutButton}
-						color="inherit"
-						onClick={onLogout}
-					>
-						<InputIcon />
-					</IconButton>
+					<RouterLink to="/">
+						<img alt="Logo" src="/src/assets/images/project-logo.png" />
+					</RouterLink>
 				</Hidden>
 				<Hidden lgUp>
 					<IconButton color="inherit" onClick={onSidebarOpen}>
 						<MenuIcon />
 					</IconButton>
 				</Hidden>
+				<div className={classes.flexGrow} />
+				<IconButton color="inherit">
+					<Badge
+						badgeContent={notifications.length}
+						color="primary"
+						variant="dot"
+					>
+						<NotificationsIcon />
+					</Badge>
+				</IconButton>
+				<IconButton
+					className={classes.signOutButton}
+					color="inherit"
+					onClick={onLogout}
+				>
+					<InputIcon />
+				</IconButton>
 			</Toolbar>
 		</AppBar>
 	)
