@@ -88,6 +88,7 @@ module.exports = {
 	optimization: {
 		namedModules: true,
 		namedChunks: true,
+		concatenateModules: false,
 		usedExports: process.env.NODE_ENV !== 'production',
 		minimize: true,
 		minimizer: [
