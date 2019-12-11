@@ -16,14 +16,15 @@ const TerserJSPlugin = require('terser-webpack-plugin')
 
 module.exports = {
 	mode: process.env.NODE_ENV,
-	entry: './src/index.js',
+	entry: ['babel-polyfill', './src/index.js'],
 	output: {
-		filename: 'bundle.js',
-		path: path.join(__dirname, 'dist')
+		path: path.join(__dirname, 'dist'),
+		publicPath: '/',
+		filename: 'bundle.js'
 	},
 	watch: process.env.NODE_ENV !== 'production' && true,
 	resolve: {
-		extensions: ['.js', 'jsx']
+		extensions: ['*', '.js', '.jsx']
 	},
 	module: {
 		rules: [
@@ -176,7 +177,7 @@ module.exports = {
 		process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map', // this helps to browser to point to the exact file in the console, helps in debug
 	devServer: {
 		compress: true,
-		contentBase: path.join(__dirname, 'dist'),
+		contentBase: path.join(__dirname, 'src'),
 		disableHostCheck: true, // THIS IS NOT RECOMMENDED,
 		// lazy: true,
 		filename: 'bundle.js',
@@ -194,7 +195,8 @@ module.exports = {
 			disableDotRule: true
 		},
 		host: '0.0.0.0',
-		hot: process.env.NODE_ENV !== 'production',
+		// hot: process.env.NODE_ENV !== 'production',
+		hot: true,
 		// http2: true,
 		// https: {
 		//   key: fs.readFileSync("/ssl/server.key"),
