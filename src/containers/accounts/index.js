@@ -213,7 +213,7 @@ export default function MaterialTableDemo() {
 	return (
 		// <div>Account</div>
 		<MaterialTable
-			icons={tableIcons}
+			// icons={tableIcons}
 			title="Editable Example"
 			columns={state.columns}
 			data={state.data}
