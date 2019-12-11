@@ -9,7 +9,7 @@
 		"build": "webpack",
 		"start:1": "webpack-dev-server --config ./webpack.dev.js",
 		"build:1": "webpack --config ./webpack.prod.js",
-		"heroku-postbuild": "build:1",
+		"heroku-postbuild": "npm run build:1",
 		"start:dev": "webpack-dev-server --open --config webpack.dev.js",
 		"build:prod": "webpack --config webpack.prod.js"
 	},
