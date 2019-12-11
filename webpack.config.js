@@ -16,7 +16,7 @@ const TerserJSPlugin = require('terser-webpack-plugin')
 
 module.exports = {
 	mode: process.env.NODE_ENV,
-	entry: ['babel-polyfill', './src/index.js'],
+	entry: './src/index.js',
 	output: {
 		path: path.join(__dirname, 'dist'),
 		publicPath: '/',
