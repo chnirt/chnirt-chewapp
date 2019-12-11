@@ -29,8 +29,7 @@ export const routes = [
 		routes: [
 			{
 				label: 'Dashboard',
-				path: '/',
-				exact: true,
+				path: '/dashboard',
 				component: 'dashboard'
 			},
 			{
@@ -103,75 +102,75 @@ export const routes = [
 	}
 ]
 
-export const menuRoutes = [
+export const pages = [
 	{
-		label: 'Dashboard',
-		path: '/',
+		title: 'Dashboard',
+		href: '/dashboard',
 		icon: <DashboardIcon />
 	},
 	{
-		label: 'Accounts',
-		path: '/accounts',
+		title: 'Accounts',
+		href: '/accounts',
 		icon: <PersonIcon />
 	},
 	{
-		label: 'Requests',
-		path: '/requests',
+		title: 'Requests',
+		href: '/requests',
 		icon: <TouchAppIcon />
 	},
 	{
-		label: 'Offers',
-		path: '/offers',
+		title: 'Offers',
+		href: '/offers',
 		icon: <LocalOfferIcon />
 	},
 	{
-		label: 'Connections',
-		path: '/connections',
+		title: 'Connections',
+		href: '/connections',
 		icon: <WifiIcon />
 	},
 	{
-		label: 'Wallets',
-		path: '/wallets',
+		title: 'Wallets',
+		href: '/wallets',
 		icon: <AccountBalanceWalletIcon />
 	},
 	{
-		label: 'Cash out',
-		path: '/cashout',
+		title: 'Cash out',
+		href: '/cashout',
 		icon: <AttachMoneyIcon />
 	},
 	{
-		label: 'Announcements',
-		path: '/announcements',
+		title: 'Announcements',
+		href: '/announcements',
 		icon: <AnnouncementIcon />
 	},
 	{
-		label: 'Banners',
-		path: '/banners',
+		title: 'Banners',
+		href: '/banners',
 		icon: <ViewCarouselIcon />
 	},
 	{
-		label: 'Promo Codes',
-		path: '/promocodes',
+		title: 'Promo Codes',
+		href: '/promocodes',
 		icon: <CodeIcon />
 	},
 	{
-		label: 'Referral',
-		path: '/referral',
+		title: 'Referral',
+		href: '/referral',
 		icon: <NotesIcon />
 	},
 	{
-		label: 'Help Center',
-		path: '/helpcenter',
+		title: 'Help Center',
+		href: '/helpcenter',
 		icon: <HelpIcon />
 	},
 	{
-		label: 'Setting',
-		path: '/setting',
+		title: 'Setting',
+		href: '/setting',
 		icon: <SettingsIcon />
 	},
 	{
-		label: 'Administrators',
-		path: '/administrators',
+		title: 'Administrators',
+		href: '/administrators',
 		icon: <SupervisorAccountIcon />
 	}
 ]
