@@ -11,6 +11,10 @@ import ViewCarouselIcon from '@material-ui/icons/ViewCarousel'
 import CodeIcon from '@material-ui/icons/Code'
 import NotesIcon from '@material-ui/icons/Notes'
 import HelpIcon from '@material-ui/icons/Help'
+import LanguageIcon from '@material-ui/icons/Language'
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
+import CropFreeIcon from '@material-ui/icons/CropFree'
+import ImageIcon from '@material-ui/icons/Image'
 import SettingsIcon from '@material-ui/icons/Settings'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 
@@ -99,6 +103,26 @@ export const routes = [
 				component: 'setting'
 			},
 			{
+				label: 'Global Setting',
+				path: '/globalsetting',
+				component: 'globalsetting'
+			},
+			{
+				label: 'Bank',
+				path: '/bank',
+				component: 'bank'
+			},
+			{
+				label: 'Referral Setting',
+				path: '/referralsetting',
+				component: 'referralsetting'
+			},
+			{
+				label: 'Stock Images',
+				path: '/stockimages',
+				component: 'stockimages'
+			},
+			{
 				label: 'Administrators',
 				path: '/administrators',
 				component: 'administrators'
@@ -171,7 +195,29 @@ export const pages = [
 	{
 		title: 'Setting',
 		href: '/setting',
-		icon: <SettingsIcon />
+		icon: <SettingsIcon />,
+		pages: [
+			{
+				title: 'Global Setting',
+				href: '/globalsetting',
+				icon: <LanguageIcon />
+			},
+			{
+				title: 'Bank',
+				href: '/bank',
+				icon: <AccountBalanceIcon />
+			},
+			{
+				title: 'Referral Setting',
+				href: '/referralsetting',
+				icon: <CropFreeIcon />
+			},
+			{
+				title: 'Stock Images',
+				href: '/stockimages',
+				icon: <ImageIcon />
+			}
+		]
 	},
 	{
 		title: 'Administrators',
