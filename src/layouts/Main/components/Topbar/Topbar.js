@@ -9,6 +9,7 @@ import NotificationsIcon from '@material-ui/icons/NotificationsOutlined'
 import InputIcon from '@material-ui/icons/Input'
 
 import { CTX } from '../../../../tools/context'
+import LongLogo from '../../../../assets/images/longlogo.jpg'
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -41,7 +42,7 @@ const Topbar = props => {
 		<AppBar {...rest} className={clsx(classes.root, className)}>
 			<Toolbar>
 				<RouterLink to="/">
-					<img alt="Logo" src="/src/assets/images/project-logo.png" />
+					<img style={{ height: 36, width: 170 }} alt="Logo" src={LongLogo} />
 				</RouterLink>
 				<div className={classes.flexGrow} />
 				<Hidden mdDown>
