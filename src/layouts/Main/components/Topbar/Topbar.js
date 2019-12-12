@@ -9,12 +9,13 @@ import NotificationsIcon from '@material-ui/icons/NotificationsOutlined'
 import InputIcon from '@material-ui/icons/Input'
 
 import { CTX } from '../../../../tools/context'
-import LongLogo from '../../../../assets/images/longlogo.jpg'
+import WhiteLongLogo from '../../../../assets/images/whitelonglogo.png'
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		boxShadow: 'none'
 	},
+	image: { height: 36, width: 170 },
 	flexGrow: {
 		flexGrow: 1
 	},
@@ -41,33 +42,33 @@ const Topbar = props => {
 	return (
 		<AppBar {...rest} className={clsx(classes.root, className)}>
 			<Toolbar>
-				<RouterLink to="/">
-					<img style={{ height: 36, width: 170 }} alt="Logo" src={LongLogo} />
-				</RouterLink>
-				<div className={classes.flexGrow} />
 				<Hidden mdDown>
-					<IconButton color="inherit">
-						<Badge
-							badgeContent={notifications.length}
-							color="primary"
-							variant="dot"
-						>
-							<NotificationsIcon />
-						</Badge>
-					</IconButton>
-					<IconButton
-						className={classes.signOutButton}
-						color="inherit"
-						onClick={onLogout}
-					>
-						<InputIcon />
-					</IconButton>
+					<RouterLink to="/">
+						<img className={classes.image} alt="Logo" src={WhiteLongLogo} />
+					</RouterLink>
 				</Hidden>
 				<Hidden lgUp>
 					<IconButton color="inherit" onClick={onSidebarOpen}>
 						<MenuIcon />
 					</IconButton>
 				</Hidden>
+				<div className={classes.flexGrow} />
+				<IconButton color="inherit">
+					<Badge
+						badgeContent={notifications.length}
+						color="primary"
+						variant="dot"
+					>
+						<NotificationsIcon />
+					</Badge>
+				</IconButton>
+				<IconButton
+					className={classes.signOutButton}
+					color="inherit"
+					onClick={onLogout}
+				>
+					<InputIcon />
+				</IconButton>
 			</Toolbar>
 		</AppBar>
 	)

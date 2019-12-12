@@ -86,10 +86,16 @@ module.exports = {
 		]
 	},
 	optimization: {
+		minimize: true,
 		namedModules: true,
 		namedChunks: true,
+		removeAvailableModules: true,
+		flagIncludedChunks: true,
+		occurrenceOrder: false,
+		usedExports: true,
+		concatenateModules: true,
+		sideEffects: false,
 		usedExports: process.env.NODE_ENV !== 'production',
-		minimize: true,
 		minimizer: [
 			// new ClosurePlugin(
 			//   { mode: "STANDARD" },
@@ -177,7 +183,7 @@ module.exports = {
 		process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map', // this helps to browser to point to the exact file in the console, helps in debug
 	devServer: {
 		compress: true,
-		contentBase: path.join(__dirname, 'src'),
+		contentBase: path.join(__dirname, 'dist'),
 		disableHostCheck: true, // THIS IS NOT RECOMMENDED,
 		// lazy: true,
 		filename: 'bundle.js',

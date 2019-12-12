@@ -27,9 +27,10 @@ const Profile = props => {
 	const classes = useStyles()
 
 	const user = {
-		name: 'Shen Zhi',
-		avatar: '/images/avatars/avatar_11.png',
-		bio: 'Brain Director'
+		name: 'Chnirt',
+		avatar:
+			'https://res.cloudinary.com/chnirt/image/upload/v1573662028/rest/2019-11-13T16:20:22.699Z.png',
+		bio: 'Brain Leader'
 	}
 
 	return (
@@ -39,7 +40,7 @@ const Profile = props => {
 				className={classes.avatar}
 				component={RouterLink}
 				src={user.avatar}
-				to="/settings"
+				to="/profile"
 			/>
 			<Typography className={classes.name} variant="h4">
 				{user.name}

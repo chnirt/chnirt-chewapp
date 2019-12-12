@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import Avatar from '@material-ui/core/Avatar'
@@ -11,11 +11,11 @@ import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { CTX } from '../../tools/context'
+import Logo from '../../assets/images/logo.png'
 
 function Copyright() {
 	return (
@@ -32,7 +32,10 @@ function Copyright() {
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		height: '100vh'
+		height: '100vh',
+		'& .MuiAvatar-img': {
+			backgroundColor: 'transparent'
+		}
 	},
 	image: {
 		backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -48,8 +51,7 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center'
 	},
 	avatar: {
-		margin: theme.spacing(1),
-		backgroundColor: theme.palette.secondary.main
+		margin: theme.spacing(1)
 	},
 	form: {
 		width: '100%', // Fix IE 11 issue.
@@ -66,12 +68,8 @@ function index(props) {
 
 	const classes = useStyles()
 
-	const email = useRef()
-	const password = useRef()
-
-	function onLogin(e) {
-		e.preventDefault()
-		const accessToken = email.current.value + password.current.value
+	function onLogin(email, password) {
+		const accessToken = email + password
 		authenticate(accessToken)
 	}
 
@@ -81,10 +79,7 @@ function index(props) {
 			<Grid item xs={false} sm={4} md={7} className={classes.image} />
 			<Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
 				<div className={classes.paper}>
-					<Avatar
-						className={classes.avatar}
-						src="https://res.cloudinary.com/chnirt/image/upload/v1573662028/rest/2019-11-13T16:20:22.699Z.png"
-					/>
+					<Avatar variant="square" className={classes.avatar} src={Logo} />
 					<Typography component="h1" variant="h5">
 						Sign in
 					</Typography>
@@ -105,14 +100,12 @@ function index(props) {
 						})}
 						onSubmit={fields => {
 							const { email, password, remember } = fields
-							// console.log(fields)
 							if (remember === true) {
 								window.localStorage.setItem('email', email)
 							} else {
 								window.localStorage.removeItem('email')
 							}
-							const accessToken = email + password
-							authenticate(accessToken)
+							onLogin(email, password)
 						}}
 						render={({ errors, status, touched }) => (
 							<Form className={classes.form} noValidate>
@@ -126,7 +119,6 @@ function index(props) {
 											name="email"
 											autoComplete="email"
 											autoFocus
-											ref={email}
 											{...field}
 											error={meta.touched && meta.error ? true : false}
 											label="Email Address"
@@ -149,7 +141,6 @@ function index(props) {
 											name="password"
 											type="password"
 											autoComplete="current-password"
-											ref={password}
 											{...field}
 											error={meta.touched && meta.error ? true : false}
 											label="Password"

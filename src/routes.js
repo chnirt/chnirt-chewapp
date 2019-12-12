@@ -28,6 +28,11 @@ export const routes = [
 		component: 'apps',
 		routes: [
 			{
+				label: 'Profile',
+				path: '/profile',
+				component: 'profile'
+			},
+			{
 				label: 'Dashboard',
 				path: '/dashboard',
 				component: 'dashboard'
