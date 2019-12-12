@@ -1,7 +1,15 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/styles'
+
+const useStyles = makeStyles(theme => ({
+	root: {
+		padding: theme.spacing(4)
+	}
+}))
 
 function index() {
-	return <div>Banners</div>
+	const classes = useStyles()
+	return <div className={classes.root}>Banner</div>
 }
 
 export default index

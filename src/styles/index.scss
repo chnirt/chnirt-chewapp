@@ -1,9 +1,7 @@
 @font-face {
 	font-family: 'MyFont';
-	src: url('../assets/fonts/nightfall-script/Nightfall\ Script\ Demo.otf')
-			format('otf'),
-		url('../assets/fonts/nightfall-script/Nightfall\ Script\ Demo.ttf')
-			format('ttf');
+	src: url('../assets/fonts/nightfall-script/Nightfall\ Script\ Demo.otf') format('otf'),
+		url('../assets/fonts/nightfall-script/Nightfall\ Script\ Demo.ttf') format('ttf');
 	font-weight: 600;
 	font-style: normal;
 }
@@ -13,4 +11,29 @@ $h2-color: red;
 h2 {
 	color: $h2-color;
 	font-family: MyFont;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	background-color: #f4f6f8;
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+#root {
+	height: 100%;
 }

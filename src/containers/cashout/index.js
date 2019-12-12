@@ -1,7 +1,15 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/styles'
+
+const useStyles = makeStyles(theme => ({
+	root: {
+		padding: theme.spacing(4)
+	}
+}))
 
 function index() {
-	return <div>Cash out</div>
+	const classes = useStyles()
+	return <div className={classes.root}>Cash out</div>
 }
 
 export default index
