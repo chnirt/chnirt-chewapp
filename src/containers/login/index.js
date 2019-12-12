@@ -16,6 +16,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import { CTX } from '../../tools/context'
 import Logo from '../../assets/images/logo.png'
+import { Facebook as FacebookIcon, Google as GoogleIcon } from '../../icons'
 
 function Copyright() {
 	return (
@@ -53,6 +54,17 @@ const useStyles = makeStyles(theme => ({
 	avatar: {
 		margin: theme.spacing(1)
 	},
+	socialButtons: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		marginTop: theme.spacing(3)
+	},
+	socialIcon: {
+		marginRight: theme.spacing(1)
+	},
+	sugestion: {
+		marginTop: theme.spacing(2)
+	},
 	form: {
 		width: '100%', // Fix IE 11 issue.
 		marginTop: theme.spacing(1)
@@ -80,8 +92,44 @@ function index(props) {
 			<Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
 				<div className={classes.paper}>
 					<Avatar variant="square" className={classes.avatar} src={Logo} />
-					<Typography component="h1" variant="h5">
-						Sign in
+
+					<Typography color="textSecondary" gutterBottom>
+						Sign in with social media
+					</Typography>
+
+					<Grid className={classes.socialButtons} container spacing={2}>
+						<Grid item xs={12} sm={6}>
+							<Button
+								fullWidth
+								color="primary"
+								onClick={onLogin}
+								size="large"
+								variant="contained"
+							>
+								<FacebookIcon className={classes.socialIcon} />
+								Login with Facebook
+							</Button>
+						</Grid>
+						<Grid item xs={12} sm={6}>
+							<Button
+								fullWidth
+								onClick={onLogin}
+								size="large"
+								variant="contained"
+							>
+								<GoogleIcon className={classes.socialIcon} />
+								Login with Google
+							</Button>
+						</Grid>
+					</Grid>
+
+					<Typography
+						align="center"
+						className={classes.sugestion}
+						color="textSecondary"
+						variant="body1"
+					>
+						or login with email address
 					</Typography>
 
 					<Formik

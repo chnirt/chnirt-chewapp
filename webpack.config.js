@@ -82,6 +82,20 @@ module.exports = {
 			{
 				test: /\.(csv|tsv)$/,
 				use: ['csv-loader']
+			},
+			{
+				test: /\.svg$/,
+				use: [
+					{
+						loader: 'babel-loader'
+					},
+					{
+						loader: 'react-svg-loader',
+						options: {
+							jsx: true // true outputs JSX tags
+						}
+					}
+				]
 			}
 		]
 	},
@@ -228,7 +242,7 @@ module.exports = {
 		// },
 		// pfx: '/path/to/file.pfx',
 		// pfxPassphrase: 'passphrase',
-		port: process.env.PORT || 8080,
+		port: process.env.PORT || 14040,
 		// proxy: {
 		//   "/api": "http://localhost:3000",
 		//   pathRewrite: { "^/api": "" }
