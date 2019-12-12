@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Profile = props => {
-	const { className, ...rest } = props
+	const { className, onClose, ...rest } = props
 
 	const classes = useStyles()
 
@@ -41,6 +41,7 @@ const Profile = props => {
 				component={RouterLink}
 				src={user.avatar}
 				to="/profile"
+				onClick={onClose}
 			/>
 			<Typography className={classes.name} variant="h4">
 				{user.name}

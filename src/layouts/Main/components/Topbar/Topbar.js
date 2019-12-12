@@ -29,7 +29,7 @@ const Topbar = props => {
 
 	const classes = useStyles()
 
-	const [notifications] = useState([])
+	const [notifications] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 	const authContext = useContext(CTX)
 
@@ -54,11 +54,7 @@ const Topbar = props => {
 				</Hidden>
 				<div className={classes.flexGrow} />
 				<IconButton color="inherit">
-					<Badge
-						badgeContent={notifications.length}
-						color="primary"
-						variant="dot"
-					>
+					<Badge badgeContent={notifications.length} color="secondary">
 						<NotificationsIcon />
 					</Badge>
 				</IconButton>

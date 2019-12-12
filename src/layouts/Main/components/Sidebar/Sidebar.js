@@ -44,7 +44,7 @@ const Sidebar = props => {
 			variant={variant}
 		>
 			<div {...rest} className={clsx(classes.root, className)}>
-				<Profile />
+				<Profile onClose={onClose} />
 				<Divider className={classes.divider} />
 				<SidebarNav className={classes.nav} pages={pages} onClose={onClose} />
 			</div>
