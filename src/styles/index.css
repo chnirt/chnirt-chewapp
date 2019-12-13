@@ -5,3 +5,8 @@
 h1 {
   color: var(--main-h1-color);
 }
+
+hr {
+  align-self: stretch;
+  height: auto;
+}

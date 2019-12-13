@@ -64,6 +64,9 @@ const useStyles = makeStyles(theme => ({
 	},
 	form: {
 		width: '100%'
+	},
+	searchInput: {
+		padding: '6px'
 	}
 }))
 

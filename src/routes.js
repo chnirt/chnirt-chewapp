@@ -28,8 +28,8 @@ export const routes = [
 	{
 		label: 'App',
 		path: '/',
-		private: true,
 		component: 'apps',
+		private: true,
 		routes: [
 			{
 				label: 'Profile',
@@ -44,7 +44,13 @@ export const routes = [
 			{
 				label: 'Accounts',
 				path: '/accounts',
-				component: 'accounts'
+				component: 'accounts',
+				exact: true
+			},
+			{
+				label: 'Accounts',
+				path: '/accounts/:id',
+				component: 'accountsDetail'
 			},
 			{
 				label: 'Requests',

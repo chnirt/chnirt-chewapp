@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
-
+import Drawer from '@material-ui/core/Drawer'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 import Toolbar from './toolbar'
 import AccountTable from './table'
+import Box from '@material-ui/core/Box'
 
 const columns = [
 	{ id: 'lastSeen', label: 'Last Open App', minWidth: 170 },
@@ -24,12 +27,13 @@ const columns = [
 	}
 ]
 
-function createData(lastSeen, createdAt, name, email, mobile) {
-	return { lastSeen, createdAt, name, email, mobile }
+function createData(id, lastSeen, createdAt, name, email, mobile) {
+	return { id, lastSeen, createdAt, name, email, mobile }
 }
 
 const rows = [
 	createData(
+		'1',
 		'24 Oct 2019 18:00',
 		'24 Oct 2019 18:00',
 		'Sean Tsai',
@@ -37,6 +41,7 @@ const rows = [
 		'+65 90995755'
 	),
 	createData(
+		'2',
 		'23 Oct 2019 09:00',
 		'23 Oct 2019 09:00',
 		'Don Goh',
@@ -44,6 +49,7 @@ const rows = [
 		'+65 98573728'
 	),
 	createData(
+		'3',
 		'22 Oct 2019 14:00',
 		'22 Oct 2019 14:00',
 		'Desmond Ser',
@@ -51,6 +57,7 @@ const rows = [
 		'+65 89484658'
 	),
 	createData(
+		'4',
 		'21 Oct 2019 15:00',
 		'21 Oct 2019 15:00',
 		'Johnson Oei',
@@ -61,10 +68,15 @@ const rows = [
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		padding: theme.spacing(4)
+		padding: theme.spacing(4),
+		minHeight: 'calc(100vh - 168px)'
 	},
 	root2: {
 		padding: theme.spacing(3)
+	},
+	title: {
+		height: '44px',
+		padding: '8px 0'
 	},
 	content: {
 		marginTop: theme.spacing(2)
@@ -75,7 +87,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }))
 
-function index() {
+function index(props) {
 	const classes = useStyles()
 	const [page, setPage] = useState(0)
 	const [rowsPerPage, setRowsPerPage] = useState(10)
@@ -89,8 +101,16 @@ function index() {
 		setPage(0)
 	}
 
+	const handleDetail = id => {
+		props.history.push(`accounts/${id}`)
+	}
+
 	return (
 		<div className={classes.root}>
+			<Box className={classes.title}>
+				<Typography variant="h3">Accounts</Typography>
+			</Box>
+
 			<Toolbar />
 			<div className={classes.content}>
 				<AccountTable
@@ -99,6 +119,7 @@ function index() {
 					page={page}
 					handleChangePage={handleChangePage}
 					handleChangeRowsPerPage={handleChangeRowsPerPage}
+					handleDetail={handleDetail}
 				/>
 			</div>
 		</div>

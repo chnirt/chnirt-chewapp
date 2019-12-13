@@ -27,7 +27,8 @@ function index(props) {
 		rowsPerPage,
 		page,
 		handleChangePage,
-		handleChangeRowsPerPage
+		handleChangeRowsPerPage,
+		handleDetail
 	} = props
 
 	return (
@@ -44,7 +45,7 @@ function index(props) {
 				</TableHead>
 				<TableBody>
 					{rows.map(row => (
-						<TableRow key={row.name}>
+						<TableRow hover key={row.name} onClick={() => handleDetail(row.id)}>
 							<TableCell align="center" component="th" scope="row">
 								{row.lastSeen}
 							</TableCell>

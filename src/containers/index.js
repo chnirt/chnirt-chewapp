@@ -20,7 +20,7 @@ function index(props) {
 							<Route
 								key={item.label}
 								{...item}
-								component={() => {
+								component={props => {
 									const LazyComponent = lazy(() =>
 										import(`./${item.component}`)
 									)
@@ -39,7 +39,7 @@ function index(props) {
 							<Route
 								key={item.label}
 								{...item}
-								component={() => {
+								component={props => {
 									const LazyComponent = lazy(() =>
 										import(`./${item.component}`)
 									)

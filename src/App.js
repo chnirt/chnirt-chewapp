@@ -8,13 +8,11 @@ import theme from './theme'
 class App extends React.PureComponent {
 	render() {
 		return (
-			<div>
-				<ThemeProvider theme={theme}>
-					<Context>
-						<Root />
-					</Context>
-				</ThemeProvider>
-			</div>
+			<ThemeProvider theme={theme}>
+				<Context>
+					<Root />
+				</Context>
+			</ThemeProvider>
 		)
 	}
 }
