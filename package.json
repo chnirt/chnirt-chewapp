@@ -8,7 +8,7 @@
 		"dev": "NODE_ENV='development' webpack-dev-server --mode development",
 		"build": "webpack",
 		"heroku-postbuild": "npm run build",
-		"start:dev": "webpack-dev-server --open --config webpack.dev.js",
+		"start:dev": "webpack-dev-server --config webpack.dev.js",
 		"build:prod": "webpack --config webpack.prod.js"
 	},
 	"keywords": [],

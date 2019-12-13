@@ -103,7 +103,7 @@ function index() {
 			<Paper className={classes.root2}>
 				<Toolbar />
 				<div className={classes.content}>
-					<AccountTable />
+					<AccountTable rows={rows} />
 				</div>
 				{/* <div className={classes.tableWrapper}>
 					<Table stickyHeader aria-label="sticky table">
