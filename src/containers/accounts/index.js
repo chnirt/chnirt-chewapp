@@ -1,14 +1,5 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Paper from '@material-ui/core/Paper'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TablePagination from '@material-ui/core/TablePagination'
-import TableRow from '@material-ui/core/TableRow'
-import SearchIcon from '@material-ui/icons/Search'
-import InputBase from '@material-ui/core/InputBase'
 
 import Toolbar from './toolbar'
 import AccountTable from './table'
@@ -100,58 +91,16 @@ function index() {
 
 	return (
 		<div className={classes.root}>
-			<Paper className={classes.root2}>
-				<Toolbar />
-				<div className={classes.content}>
-					<AccountTable rows={rows} />
-				</div>
-				{/* <div className={classes.tableWrapper}>
-					<Table stickyHeader aria-label="sticky table">
-						<TableHead>
-							<TableRow>
-								{columns.map((column, i) => (
-									<TableCell
-										key={i}
-										align={column.align}
-										style={{ minWidth: column.minWidth }}
-									>
-										{column.label}
-									</TableCell>
-								))}
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{rows
-								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-								.map((row, i) => {
-									return (
-										<TableRow hover role="checkbox" tabIndex={-1} key={i}>
-											{columns.map((column, i) => {
-												const value = row[column.id]
-												return (
-													<TableCell key={i} align={column.align}>
-														{column.format && typeof value === 'number'
-															? column.format(value)
-															: value}
-													</TableCell>
-												)
-											})}
-										</TableRow>
-									)
-								})}
-						</TableBody>
-					</Table>
-				</div>
-				<TablePagination
-					rowsPerPageOptions={[10, 25, 100]}
-					component="div"
-					count={rows.length}
+			<Toolbar />
+			<div className={classes.content}>
+				<AccountTable
+					rows={rows}
 					rowsPerPage={rowsPerPage}
 					page={page}
-					onChangePage={handleChangePage}
-					onChangeRowsPerPage={handleChangeRowsPerPage}
-				/> */}
-			</Paper>
+					handleChangePage={handleChangePage}
+					handleChangeRowsPerPage={handleChangeRowsPerPage}
+				/>
+			</div>
 		</div>
 	)
 }

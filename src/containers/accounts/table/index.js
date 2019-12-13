@@ -7,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
+import TablePagination from '@material-ui/core/TablePagination'
 
 const useStyles = makeStyles({
 	root: {
@@ -18,14 +19,16 @@ const useStyles = makeStyles({
 	}
 })
 
-function createData(name, calories, fat, carbs, protein) {
-	return { name, calories, fat, carbs, protein }
-}
-
 function index(props) {
 	const classes = useStyles()
 
-	const { rows } = props
+	const {
+		rows,
+		rowsPerPage,
+		page,
+		handleChangePage,
+		handleChangeRowsPerPage
+	} = props
 
 	return (
 		<Paper className={classes.root}>
@@ -53,13 +56,22 @@ function index(props) {
 					))}
 				</TableBody>
 			</Table>
+			<TablePagination
+				rowsPerPageOptions={[5, 10, 25]}
+				component="div"
+				count={rows.length}
+				rowsPerPage={rowsPerPage}
+				page={page}
+				onChangePage={handleChangePage}
+				onChangeRowsPerPage={handleChangeRowsPerPage}
+			/>
 		</Paper>
 	)
 }
 
 index.propTypes = {
-	className: PropTypes.string
-	// users: PropTypes.array.isRequired
+	className: PropTypes.string,
+	rows: PropTypes.array.isRequired
 }
 
 export default index
