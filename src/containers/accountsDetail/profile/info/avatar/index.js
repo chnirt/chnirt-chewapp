@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import { IconButton } from '@material-ui/core'
 import PhotoCamera from '@material-ui/icons/PhotoCamera'
+import Typography from '@material-ui/core/Typography'
 
 const image = {
 	url:
@@ -86,6 +87,9 @@ const useStyles = makeStyles(theme => ({
 	uploadIcon: {
 		color: 'white'
 	},
+	typo: {
+		color: 'white'
+	},
 	input: {
 		display: 'none'
 	}
@@ -127,8 +131,11 @@ export default function index() {
 							component="span"
 							className={classes.uploadIcon}
 						>
-							<PhotoCamera />
+							<PhotoCamera fontSize="large" />
 						</IconButton>
+						<Typography variant="h5" className={classes.typo}>
+							Click to change photo
+						</Typography>
 					</label>
 				</span>
 			</ButtonBase>

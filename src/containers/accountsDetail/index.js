@@ -38,10 +38,8 @@ function TabPanel(props) {
 
 function a11yProps(index) {
 	return {
-		// id: `scrollable-auto-tab-${index}`,
-		// 'aria-controls': `scrollable-auto-tabpanel-${index}`
-		id: `scrollable-prevent-tab-${index}`,
-		'aria-controls': `scrollable-prevent-tabpanel-${index}`
+		id: `scrollable-auto-tab-${index}`,
+		'aria-controls': `scrollable-auto-tabpanel-${index}`
 	}
 }
 
@@ -105,8 +103,6 @@ function index(props) {
 					indicatorColor="primary"
 					textColor="primary"
 					aria-label="scrollable force tabs example"
-					disableFocusRipple={true}
-					disableRipple={true}
 				>
 					<Tab label="Profile" {...a11yProps(0)} />
 					<Tab label="Saved Address" {...a11yProps(1)} />
@@ -117,6 +113,7 @@ function index(props) {
 				axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
 				index={value}
 				onChangeIndex={handleChange}
+				disabled
 			>
 				<TabPanel
 					value={value}
