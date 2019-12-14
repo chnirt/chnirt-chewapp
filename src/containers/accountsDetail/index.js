@@ -101,7 +101,7 @@ function index(props) {
 					value={value}
 					onChange={handleChange}
 					variant="scrollable"
-					scrollButtons="on"
+					scrollButtons="off"
 					indicatorColor="primary"
 					textColor="primary"
 					aria-label="scrollable force tabs example"
