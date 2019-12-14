@@ -106,9 +106,9 @@ function index(props) {
 					textColor="primary"
 					aria-label="scrollable force tabs example"
 				>
-					<Tab label="Profile" {...a11yProps(0)} />
-					<Tab label="Saved Address" {...a11yProps(1)} />
-					<Tab label="Rating" {...a11yProps(2)} />
+					<Tab disableRipple={false} label="Profile" {...a11yProps(0)} />
+					<Tab disableRipple={false} label="Saved Address" {...a11yProps(1)} />
+					<Tab disableRipple={false} label="Rating" {...a11yProps(2)} />
 				</Tabs>
 			</Paper>
 			<SwipeableViews
