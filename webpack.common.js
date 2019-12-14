@@ -98,7 +98,7 @@ module.exports = {
 			const port = server.listeningApp.address().port
 			console.log('🚀 Listening on port:', port)
 		},
-		open: true, // 'Google Chrome'
+		// open: true, // 'Google Chrome'
 		port: process.env.PORT || 14040,
 		stats: {
 			colors: true,

@@ -6,6 +6,8 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
+import Rating from '@material-ui/lab/Rating'
+import Badge from '@material-ui/core/Badge'
 
 const useStyles = makeStyles({
 	root: {
@@ -42,7 +44,7 @@ function index() {
 			<Table className={classes.table} aria-label="simple table">
 				<TableHead>
 					<TableRow>
-						<TableCell>Connect Date/Time</TableCell>
+						<TableCell align="center">Connect Date/Time</TableCell>
 						<TableCell align="center">Connection ID</TableCell>
 						<TableCell align="center">Type</TableCell>
 						<TableCell align="center">Owner</TableCell>
@@ -52,16 +54,23 @@ function index() {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{rows.map(row => (
-						<TableRow key={row.name}>
+					{rows.map((row, i) => (
+						<TableRow key={i}>
 							<TableCell component="th" scope="row" align="center">
 								{row.time}
 							</TableCell>
 							<TableCell align="center">{row.connectionID}</TableCell>
-							<TableCell align="center">{row.type}</TableCell>
+							<TableCell align="center">
+								<Badge
+									badgeContent={row.type}
+									color={row.type === 'Request' ? 'default' : 'primary'}
+								/>
+							</TableCell>
 							<TableCell align="center">{row.owner}</TableCell>
 							<TableCell align="center">{row.connectedBy}</TableCell>
-							<TableCell align="center">{row.rating}</TableCell>
+							<TableCell align="center">
+								<Rating name="size-small" value={row.rating} size="small" />
+							</TableCell>
 							<TableCell align="center">{row.comments}</TableCell>
 						</TableRow>
 					))}
