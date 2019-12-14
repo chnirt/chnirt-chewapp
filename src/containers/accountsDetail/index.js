@@ -38,8 +38,10 @@ function TabPanel(props) {
 
 function a11yProps(index) {
 	return {
-		id: `scrollable-auto-tab-${index}`,
-		'aria-controls': `scrollable-auto-tabpanel-${index}`
+		// id: `scrollable-auto-tab-${index}`,
+		// 'aria-controls': `scrollable-auto-tabpanel-${index}`
+		id: `scrollable-prevent-tab-${index}`,
+		'aria-controls': `scrollable-prevent-tabpanel-${index}`
 	}
 }
 
