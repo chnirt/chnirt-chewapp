@@ -110,7 +110,6 @@ function index(props) {
 			<Box className={classes.title}>
 				<Typography variant="h3">Accounts</Typography>
 			</Box>
-
 			<Toolbar />
 			<div className={classes.content}>
 				<AccountTable
