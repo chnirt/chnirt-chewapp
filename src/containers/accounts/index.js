@@ -5,8 +5,8 @@ import Toolbar from './toolbar'
 import AccountTable from './table'
 import Box from '@material-ui/core/Box'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import Drawer from '@material-ui/core/Drawer'
 import AccountsDetail from '../accountsDetail'
-import Grid from '@material-ui/core/Grid'
 
 const columns = [
 	{ id: 'lastSeen', label: 'Last Open App', minWidth: 170 },
@@ -131,15 +131,14 @@ function index(props) {
 				/>
 			</div>
 
-			<SwipeableDrawer
+			<Drawer
 				anchor="right"
 				open={drawer}
 				onClose={toggleDrawer(false)}
-				onOpen={toggleDrawer(true)}
-				// disableSwipeToOpen={false}
+				// onOpen={toggleDrawer(true)}
 			>
 				<AccountsDetail id={id} toggleDrawer={toggleDrawer} />
-			</SwipeableDrawer>
+			</Drawer>
 		</div>
 	)
 }
