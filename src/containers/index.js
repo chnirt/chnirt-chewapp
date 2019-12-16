@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 import { CTX } from '../tools/context'
 
-import Loading from '../components/shared/loading'
+import Loading from '../components/loading'
 import Layout from '../layouts'
 import { routes } from '../routes'
 

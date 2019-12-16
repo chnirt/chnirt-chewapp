@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-import Loading from '../../components/shared/loading'
+import Loading from '../../components/loading'
 import './styles.css'
 
 export default function Root(props) {
