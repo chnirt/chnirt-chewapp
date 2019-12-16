@@ -1,68 +1,96 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Typography from '@material-ui/core/Typography'
 import Toolbar from './toolbar'
 import AccountTable from './table'
-import Box from '@material-ui/core/Box'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import AccountsDetail from '../accountsDetail'
+
+import Breadcrumb from '../../components/breadcrumb'
 
 const columns = [
-	{ id: 'lastSeen', label: 'Last Open App', minWidth: 170 },
-	{ id: 'createdAt', label: 'Registration Date', minWidth: 100 },
+	{ id: 'requestDate', label: 'Request Date / Time', minWidth: 170 },
+	{ id: 'name', label: 'Name', minWidth: 100 },
 	{
-		id: 'name',
-		label: 'Name',
+		id: 'whatIsIt',
+		label: 'What is it',
 		minWidth: 170
 	},
 	{
-		id: 'email',
-		label: 'Email',
+		id: 'expiryTime',
+		label: 'Expiry Time',
 		minWidth: 170
 	},
 	{
-		id: 'mobile',
-		label: 'Mobile',
+		id: 'from',
+		label: 'From',
+		minWidth: 170
+	},
+	{
+		id: 'to',
+		label: 'To',
+		minWidth: 170
+	},
+	{
+		id: 'payment',
+		label: 'Payment',
+		minWidth: 170
+	},
+	{
+		id: 'connections',
+		label: 'Connections',
+		minWidth: 170
+	},
+	{
+		id: 'status',
+		label: 'Status',
 		minWidth: 170
 	}
 ]
 
-function createData(id, lastSeen, createdAt, name, email, mobile) {
-	return { id, lastSeen, createdAt, name, email, mobile }
+function createData(
+	requestDate,
+	name,
+	whatIsIt,
+	expiryTime,
+	from,
+	to,
+	payment,
+	connections,
+	status
+) {
+	return {
+		requestDate,
+		name,
+		whatIsIt,
+		expiryTime,
+		from,
+		to,
+		payment,
+		connections,
+		status
+	}
 }
 
 const rows = [
 	createData(
-		'1',
-		'24 Oct 2019 18:00',
-		'24 Oct 2019 18:00',
+		'24 Oct 2019 9:00',
 		'Sean Tsai',
-		'sean@chewapp.co',
-		'+65 90995755'
+		'3 packs of chicken rice',
+		'30min',
+		'22 Sin Ming Lane',
+		'24 Sin Ming Lane',
+		'ChewPay',
+		0,
+		'Active'
 	),
 	createData(
-		'2',
-		'23 Oct 2019 09:00',
-		'23 Oct 2019 09:00',
+		'23 Oct 2019 20:00',
 		'Don Goh',
-		'don@chewapp.co',
-		'+65 98573728'
-	),
-	createData(
-		'3',
-		'22 Oct 2019 14:00',
-		'22 Oct 2019 14:00',
-		'Desmond Ser',
-		'desmond@chewapp.co',
-		'+65 89484658'
-	),
-	createData(
-		'4',
-		'21 Oct 2019 15:00',
-		'21 Oct 2019 15:00',
-		'Johnson Oei',
-		'johnson@chewapp.co',
-		'+65 89836478'
+		'Anything',
+		'120min',
+		'Loyang Point',
+		'30 Pasir Ris',
+		'Cash',
+		2,
+		'Expired'
 	)
 ]
 
@@ -71,12 +99,8 @@ const useStyles = makeStyles(theme => ({
 		padding: theme.spacing(4),
 		minHeight: 'calc(100vh - 168px)'
 	},
-	root2: {
-		padding: theme.spacing(3)
-	},
-	title: {
-		height: '44px',
-		padding: '8px 0'
+	breadcrumb: {
+		padding: theme.spacing(1)
 	},
 	content: {
 		marginTop: theme.spacing(2)
@@ -106,7 +130,6 @@ function index() {
 	const handleDetail = id => {
 		setDrawer(true)
 		setId(id)
-		// props.history.push(`accounts/${id}`)
 	}
 
 	const toggleDrawer = open => event => {
@@ -114,12 +137,14 @@ function index() {
 	}
 	return (
 		<div className={classes.root}>
-			<Box className={classes.title}>
-				<Typography variant="h3">Accounts</Typography>
-			</Box>
+			<div className={classes.breadcrumb}>
+				<Breadcrumb>Request</Breadcrumb>
+			</div>
+
 			<Toolbar />
 			<div className={classes.content}>
 				<AccountTable
+					columns={columns}
 					rows={rows}
 					rowsPerPage={rowsPerPage}
 					page={page}

@@ -56,12 +56,15 @@ function index(props) {
 							className={classes.tableRow}
 						>
 							<TableCell align="center" component="th" scope="row">
-								{row.lastSeen}
+								{row.offerDate}
 							</TableCell>
-							<TableCell align="center">{row.createdAt}</TableCell>
 							<TableCell align="center">{row.name}</TableCell>
-							<TableCell align="center">{row.email}</TableCell>
-							<TableCell align="center">{row.mobile}</TableCell>
+							<TableCell align="center">{row.whatIsIt}</TableCell>
+							<TableCell align="center">{row.from}</TableCell>
+							<TableCell align="center">{row.to}</TableCell>
+							<TableCell align="center">{row.payment}</TableCell>
+							<TableCell align="center">{row.connections}</TableCell>
+							<TableCell align="center">{row.status}</TableCell>
 						</TableRow>
 					))}
 				</TableBody>

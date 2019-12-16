@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Drawer from '@material-ui/core/Drawer'
 import AccountsDetail from '../accountsDetail'
+import Breadcrumb from '../../components/breadcrumb'
 
 const columns = [
 	{ id: 'lastSeen', label: 'Last Open App', minWidth: 170 },
@@ -72,12 +73,8 @@ const useStyles = makeStyles(theme => ({
 		padding: theme.spacing(4),
 		minHeight: 'calc(100vh - 168px)'
 	},
-	root2: {
-		padding: theme.spacing(3)
-	},
-	title: {
-		height: '44px',
-		padding: '8px 0'
+	breadcrumb: {
+		padding: theme.spacing(1)
 	},
 	content: {
 		marginTop: theme.spacing(2)
@@ -107,7 +104,6 @@ function index(props) {
 	const handleDetail = id => {
 		setDrawer(true)
 		setId(id)
-		// props.history.push(`accounts/${id}`)
 	}
 
 	const toggleDrawer = open => event => {
@@ -116,12 +112,14 @@ function index(props) {
 
 	return (
 		<div className={classes.root}>
-			<Box className={classes.title}>
-				<Typography variant="h3">Accounts</Typography>
-			</Box>
+			<div className={classes.breadcrumb}>
+				<Breadcrumb>Accounts</Breadcrumb>
+			</div>
+
 			<Toolbar />
 			<div className={classes.content}>
 				<AccountTable
+					columns={columns}
 					rows={rows}
 					rowsPerPage={rowsPerPage}
 					page={page}
@@ -131,12 +129,7 @@ function index(props) {
 				/>
 			</div>
 
-			<Drawer
-				anchor="right"
-				open={drawer}
-				onClose={toggleDrawer(false)}
-				// onOpen={toggleDrawer(true)}
-			>
+			<Drawer anchor="right" open={drawer} onClose={toggleDrawer(false)}>
 				<AccountsDetail id={id} toggleDrawer={toggleDrawer} />
 			</Drawer>
 		</div>

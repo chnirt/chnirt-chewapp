@@ -16,6 +16,9 @@ const useStyles = makeStyles({
 	},
 	table: {
 		minWidth: 650
+	},
+	tableRow: {
+		cursor: 'pointer'
 	}
 })
 
@@ -23,6 +26,7 @@ function index(props) {
 	const classes = useStyles()
 
 	const {
+		columns,
 		rows,
 		rowsPerPage,
 		page,
@@ -36,23 +40,32 @@ function index(props) {
 			<Table className={classes.table} aria-label="simple table">
 				<TableHead>
 					<TableRow>
-						<TableCell align="center">Last Open App</TableCell>
-						<TableCell align="center">Registration Date</TableCell>
-						<TableCell align="center">Name</TableCell>
-						<TableCell align="center">Email</TableCell>
-						<TableCell align="center">Mobile</TableCell>
+						{columns.map(column => (
+							<TableCell key={column.id} align="center">
+								{column.label}
+							</TableCell>
+						))}
 					</TableRow>
 				</TableHead>
 				<TableBody>
 					{rows.map(row => (
-						<TableRow hover key={row.name} onClick={() => handleDetail(row.id)}>
+						<TableRow
+							hover
+							key={row.name}
+							onClick={() => handleDetail(row.id)}
+							className={classes.tableRow}
+						>
 							<TableCell align="center" component="th" scope="row">
-								{row.lastSeen}
+								{row.requestDate}
 							</TableCell>
-							<TableCell align="center">{row.createdAt}</TableCell>
 							<TableCell align="center">{row.name}</TableCell>
-							<TableCell align="center">{row.email}</TableCell>
-							<TableCell>{row.mobile}</TableCell>
+							<TableCell align="center">{row.whatIsIt}</TableCell>
+							<TableCell align="center">{row.expiryTime}</TableCell>
+							<TableCell align="center">{row.from}</TableCell>
+							<TableCell align="center">{row.to}</TableCell>
+							<TableCell align="center">{row.payment}</TableCell>
+							<TableCell align="center">{row.connections}</TableCell>
+							<TableCell align="center">{row.status}</TableCell>
 						</TableRow>
 					))}
 				</TableBody>
