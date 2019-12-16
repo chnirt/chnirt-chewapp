@@ -136,7 +136,7 @@ function index(props) {
 				open={drawer}
 				onClose={toggleDrawer(false)}
 				onOpen={toggleDrawer(true)}
-				disableSwipeToOpen={false}
+				// disableSwipeToOpen={false}
 			>
 				<AccountsDetail id={id} toggleDrawer={toggleDrawer} />
 			</SwipeableDrawer>

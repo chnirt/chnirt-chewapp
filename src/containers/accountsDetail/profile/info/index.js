@@ -15,7 +15,9 @@ import {
 import AvatarBase from './avatar'
 
 const useStyles = makeStyles(theme => ({
-	root: {},
+	root: {
+		minHeight: 382
+	},
 	details: {
 		display: 'flex'
 	},
