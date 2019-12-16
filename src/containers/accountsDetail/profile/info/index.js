@@ -71,13 +71,13 @@ const index = props => {
 					<LinearProgress value={70} variant="determinate" />
 				</div>
 			</CardContent>
-			<Divider />
+			{/* <Divider />
 			<CardActions>
 				<Button className={classes.uploadButton} color="primary" variant="text">
 					Upload picture
 				</Button>
 				<Button variant="text">Remove picture</Button>
-			</CardActions>
+			</CardActions> */}
 		</Card>
 	)
 }

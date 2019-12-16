@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Drawer from '@material-ui/core/Drawer'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Toolbar from './toolbar'
 import AccountTable from './table'
 import Box from '@material-ui/core/Box'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import AccountsDetail from '../accountsDetail'
+import Grid from '@material-ui/core/Grid'
 
 const columns = [
 	{ id: 'lastSeen', label: 'Last Open App', minWidth: 170 },
@@ -91,6 +92,8 @@ function index(props) {
 	const classes = useStyles()
 	const [page, setPage] = useState(0)
 	const [rowsPerPage, setRowsPerPage] = useState(10)
+	const [id, setId] = useState(null)
+	const [drawer, setDrawer] = useState(false)
 
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage)
@@ -102,7 +105,13 @@ function index(props) {
 	}
 
 	const handleDetail = id => {
-		props.history.push(`accounts/${id}`)
+		setDrawer(true)
+		setId(id)
+		// props.history.push(`accounts/${id}`)
+	}
+
+	const toggleDrawer = open => event => {
+		setDrawer(open)
 	}
 
 	return (
@@ -121,6 +130,16 @@ function index(props) {
 					handleDetail={handleDetail}
 				/>
 			</div>
+
+			<SwipeableDrawer
+				anchor="right"
+				open={drawer}
+				onClose={toggleDrawer(false)}
+				onOpen={toggleDrawer(true)}
+				disableSwipeToOpen={false}
+			>
+				<AccountsDetail id={id} toggleDrawer={toggleDrawer} />
+			</SwipeableDrawer>
 		</div>
 	)
 }

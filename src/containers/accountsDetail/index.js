@@ -7,7 +7,10 @@ import SwipeableViews from 'react-swipeable-views'
 import Paper from '@material-ui/core/Paper'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 import { makeStyles, useTheme } from '@material-ui/styles'
+import CloseIcon from '@material-ui/icons/Close'
 
 import Profile from './profile'
 import SavedAddress from './savedaddress'
@@ -44,9 +47,20 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles(theme => ({
+	drawer: {
+		[theme.breakpoints.up('xs')]: {
+			width: '100vw'
+		},
+		[theme.breakpoints.up('sm')]: {
+			width: '100vw'
+		},
+		[theme.breakpoints.up('md')]: {
+			width: '800px'
+		}
+	},
 	root: {
 		padding: theme.spacing(4),
-		minHeight: 'calc(100vh - 168px)'
+		minHeight: 'calc(100vh - 44px)'
 	},
 	typo: {
 		margin: theme.spacing(1),
@@ -57,19 +71,16 @@ const useStyles = makeStyles(theme => ({
 		'& .MuiBox-root': {
 			padding: '24px 1px'
 		}
+	},
+	backButton: {
+		marginRight: theme.spacing(2)
 	}
 }))
 
 function index(props) {
 	const classes = useStyles()
 
-	const { match } = props
-	const { params } = match
-	const { id } = params
-
-	function handleBack() {
-		props.history.push('/accounts')
-	}
+	const { id, toggleDrawer } = props
 
 	const [value, setValue] = React.useState(0)
 
@@ -80,66 +91,60 @@ function index(props) {
 	const theme = useTheme()
 
 	return (
-		<div className={classes.root}>
-			<Box display="flex" flexDirection="row">
-				<Box>
-					<IconButton aria-label="delete" onClick={handleBack}>
-						<ArrowBackIcon fontSize="small" />
-					</IconButton>
-				</Box>
-				<Box>
-					<Typography variant="h3" className={classes.typo}>
-						Accounts - {id && id}
-					</Typography>
-				</Box>
-			</Box>
+		<div className={classes.drawer}>
+			<IconButton onClick={toggleDrawer(false)} color="inherit">
+				<CloseIcon fontSize="small" />
+			</IconButton>
 
-			<Paper square>
-				<Tabs
-					value={value}
-					onChange={handleChange}
-					variant="scrollable"
-					scrollButtons="off"
-					indicatorColor="primary"
-					textColor="primary"
-					aria-label="scrollable force tabs example"
+			<div className={classes.root}>
+				<Paper square>
+					<Tabs
+						value={value}
+						onChange={handleChange}
+						variant="scrollable"
+						scrollButtons="off"
+						indicatorColor="primary"
+						textColor="primary"
+						aria-label="scrollable force tabs example"
+					>
+						<Tab label="Profile" {...a11yProps(0)} />
+						<Tab label="Saved Address" {...a11yProps(1)} />
+						<Tab label="Rating" {...a11yProps(2)} />
+					</Tabs>
+				</Paper>
+
+				<SwipeableViews
+					axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+					index={value}
+					onChangeIndex={handleChange}
+					disabled
 				>
-					<Tab label="Profile" {...a11yProps(0)} />
-					<Tab label="Saved Address" {...a11yProps(1)} />
-					<Tab label="Rating" {...a11yProps(2)} />
-				</Tabs>
-			</Paper>
-			<SwipeableViews
-				axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-				index={value}
-				onChangeIndex={handleChange}
-				disabled
-			>
-				<TabPanel
-					value={value}
-					index={0}
-					dir={theme.direction}
-					className={classes.tabPanel}
-				>
-					<Profile />
-				</TabPanel>
-				<TabPanel
-					value={value}
-					index={1}
-					dir={theme.direction}
-					className={classes.tabPanel}
-				>
-					<SavedAddress />
-				</TabPanel>
-				<TabPanel
-					value={value}
-					index={2}
-					dir={theme.direction}
-					className={classes.tabPanel}
-				>
-					<Rating />
-				</TabPanel>
-			</SwipeableViews>
+					<TabPanel
+						value={value}
+						index={0}
+						dir={theme.direction}
+						className={classes.tabPanel}
+					>
+						<Profile />
+					</TabPanel>
+					<TabPanel
+						value={value}
+						index={1}
+						dir={theme.direction}
+						className={classes.tabPanel}
+					>
+						<SavedAddress />
+					</TabPanel>
+					<TabPanel
+						value={value}
+						index={2}
+						dir={theme.direction}
+						className={classes.tabPanel}
+					>
+						<Rating />
+					</TabPanel>
+				</SwipeableViews>
+			</div>
 		</div>
 	)
 }
