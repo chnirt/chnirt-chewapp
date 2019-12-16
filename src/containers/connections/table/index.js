@@ -51,8 +51,8 @@ function index(props) {
 					{rows.map(row => (
 						<TableRow
 							hover
-							key={row.name}
-							onClick={() => handleDetail(row.id)}
+							key={row.connectionID}
+							onClick={() => handleDetail(row.connectionID)}
 							className={classes.tableRow}
 						>
 							<TableCell align="center" component="th" scope="row">
