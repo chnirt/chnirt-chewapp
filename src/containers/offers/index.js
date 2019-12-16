@@ -129,7 +129,7 @@ function index() {
 	return (
 		<div className={classes.root}>
 			<div className={classes.breadcrumb}>
-				<Breadcrumb>Request</Breadcrumb>
+				<Breadcrumb>Offers</Breadcrumb>
 			</div>
 
 			<Toolbar />

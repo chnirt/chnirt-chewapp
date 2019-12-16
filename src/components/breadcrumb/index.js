@@ -23,7 +23,7 @@ export default function index(props) {
 			>
 				Dashboard
 			</Link>
-			<Typography color="textPrimary">{children}</Typography>
+			{children && <Typography color="textPrimary">{children}</Typography>}
 		</Breadcrumbs>
 	)
 }

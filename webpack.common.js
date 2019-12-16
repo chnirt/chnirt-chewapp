@@ -7,7 +7,7 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			title: 'Hello Webpack bundled JavaScript Project',
+			title: 'ChewApp Admin Template',
 			template: './public/index.html'
 		})
 	],
